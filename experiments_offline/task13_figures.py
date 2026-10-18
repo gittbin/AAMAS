@@ -8,7 +8,7 @@
   * The online curve is labelled an "online per-realisation reference", never a
     formal upper bound.
 
-Reads results/experiment.pkl (+ resubmission/out/task1_convergence.npz for the
+Reads results/experiment.pkl (+ experiments_offline/out/task1_convergence.npz for the
 Fig-2 bands) and writes to figures_paper/.
 """
 from __future__ import annotations
@@ -27,7 +27,7 @@ import numpy as np
 
 OUTDIR = "figures_paper"
 PKL = "results/experiment.pkl"
-CONV = "resubmission/out/task1_convergence.npz"
+CONV = "experiments_offline/out/task1_convergence.npz"
 
 plt.rcParams.update({
     "font.size": 15, "axes.labelsize": 17, "axes.titlesize": 16,

@@ -1,6 +1,6 @@
-"""Aggregate every filled placeholder from the resubmission out/*.json into one file.
+"""Aggregate every filled placeholder from experiments_offline/out/*.json into one file.
 
-Writes resubmission/out/ALL_PLACEHOLDERS.md - the manuscript placeholder -> value
+Writes experiments_offline/out/ALL_PLACEHOLDERS.md - the manuscript placeholder -> value
 map, marking anything still pending.
 """
 from __future__ import annotations
@@ -12,7 +12,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-OUT = "resubmission/out"
+OUT = "experiments_offline/out"
 
 # every placeholder the reviewer document lists, grouped by task
 EXPECTED = {

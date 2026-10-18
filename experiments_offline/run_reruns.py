@@ -1,11 +1,11 @@
 """Orchestration driver - runs every dependent compute task in sequence on GPU.
 
-Assumes resubmission/out/rerun_fronts.pkl is complete (Task 1b/2 foundation).
+Assumes experiments_offline/out/rerun_fronts.pkl is complete (Task 1b/2 foundation).
 Each step is checkpointed and independently resumable; a failure in one step is
 logged and the driver continues to the next.
 
 Order: analyses (fast) -> new GPU runs -> figures -> aggregate.
-Usage: python resubmission/run_reruns.py [--seeds 15]
+Usage: python experiments_offline/run_reruns.py [--seeds 15]
 """
 from __future__ import annotations
 
@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
 def _run(name, modname, argv):
-    mod = importlib.import_module(f"resubmission.{modname}")
+    mod = importlib.import_module(f"experiments_offline.{modname}")
     importlib.reload(mod)
     print(f"\n{'='*80}\n>>> STEP: {name}  ({modname}.main {argv})\n{'='*80}", flush=True)
     t0 = time.perf_counter()

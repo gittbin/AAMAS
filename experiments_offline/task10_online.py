@@ -14,7 +14,7 @@ For a trained RAMP offline unified front it reports:
 The online curve is an *online per-realisation optimisation reference*, NOT a formal
 upper bound.
 
-Usage: python resubmission/task10_online.py --device cuda --n-online 30 --seed 0
+Usage: python experiments_offline/task10_online.py --device cuda --n-online 30 --seed 0
 """
 from __future__ import annotations
 
@@ -36,7 +36,7 @@ from momgrap.logging_utils import setup_logging
 from momgrap.metrics import hv_reference, hypervolume_2d, non_dominated
 from momgrap.objectives import draw_generation_environments, robust_evaluate
 
-OUT = "resubmission/out"
+OUT = "experiments_offline/out"
 
 
 def main(argv=None):

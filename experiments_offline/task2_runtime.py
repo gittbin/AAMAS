@@ -1,4 +1,4 @@
-"""Task 2 - runtime, throughput, memory summary from resubmission/out/rerun_fronts.pkl.
+"""Task 2 - runtime, throughput, memory summary from experiments_offline/out/rerun_fronts.pkl.
 
 Per method (mean over seeds): total wall-clock, evolutionary search time, final
 archive cross-regime re-evaluation time, peak memory, total fitness evaluations,
@@ -15,7 +15,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import numpy as np
 
-OUT = "resubmission/out"
+OUT = "experiments_offline/out"
 CKPT = os.path.join(OUT, "rerun_fronts.pkl")
 LAB = {"adaptive": "RAMP", "fixed_rmp": "FIX", "no_transfer": "NT",
        "pooled": "POOL", "mo_de": "DE", "mopso": "PSO"}

@@ -1,4 +1,4 @@
-"""Shared instrumentation harness for the resubmission re-runs.
+"""Shared instrumentation harness for the offline experiment runs.
 
 Runs any method (RAMP/adaptive, fixed_rmp, no_transfer, pooled, mo_de, mopso) with:
   * timing split into evolutionary-search time and final archive cross-regime

@@ -12,9 +12,9 @@ and the matched-pairs rank-biserial effect size.  It also builds convergence
 bands (median + IQR + mean±CI) over generations for the plots.
 
 Outputs:
-  resubmission/out/task1_hv_stats.json    machine-readable
-  resubmission/out/task1_hv_stats.txt     human-readable + filled placeholders
-  resubmission/out/task1_convergence.npz  per-gen bands for the figure
+  experiments_offline/out/task1_hv_stats.json    machine-readable
+  experiments_offline/out/task1_hv_stats.txt     human-readable + filled placeholders
+  experiments_offline/out/task1_convergence.npz  per-gen bands for the figure
 """
 from __future__ import annotations
 
@@ -29,7 +29,7 @@ import numpy as np
 from scipy import stats
 
 PKL = "results/experiment.pkl"
-OUT = "resubmission/out"
+OUT = "experiments_offline/out"
 
 # data-key -> (short manuscript tag, display label)
 LABELS = {
@@ -223,7 +223,7 @@ def main():
         "placeholders_task1_HV": placeholders,
         "note_IGD": "IGD placeholders (N_REF, IGD_*) require per-seed unified fronts, "
                     "which the current pickle stores only for seed 0. They are produced "
-                    "by resubmission/rerun_fronts.py (per-seed fronts) -> task1b_igd.py.",
+                    "by experiments_offline/rerun_fronts.py (per-seed fronts) -> task1b_igd.py.",
     }
     with open(os.path.join(OUT, "task1_hv_stats.json"), "w") as f:
         json.dump(result, f, indent=2)

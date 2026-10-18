@@ -12,8 +12,8 @@ Two geometry conditions are reported:
     on how correlated the regimes could be.
 
 Outputs:
-  resubmission/out/task5_similarity.json
-  resubmission/out/task5_similarity.txt
+  experiments_offline/out/task5_similarity.json
+  experiments_offline/out/task5_similarity.txt
 """
 from __future__ import annotations
 
@@ -31,7 +31,7 @@ from scipy import stats
 from momgrap.config import default_config
 from momgrap.objectives import draw_generation_environments, evaluate_single_regime
 
-OUT = "resubmission/out"
+OUT = "experiments_offline/out"
 PAIRS = [(0, 1), (0, 2), (1, 2)]        # LoS-Rayleigh, LoS-Rician, Rayleigh-Rician
 PAIR_NAMES = ["LoS_vs_Rayleigh", "LoS_vs_Rician", "Rayleigh_vs_Rician"]
 

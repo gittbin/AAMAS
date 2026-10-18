@@ -1,16 +1,16 @@
 """Task 4 - fixed-RMP sweep + adaptive RMP diagnostics.
 
 Runs the fixed-RMP MO-MFEA at rmp in {0.1, 0.3, 0.5} (15 seeds each) and reuses
-rmp=0.0 (== no-transfer) and adaptive from resubmission/out/rerun_fronts.pkl.
+rmp=0.0 (== no-transfer) and adaptive from experiments_offline/out/rerun_fronts.pkl.
 
 Records per RMP value: HV mean+/-std, IGD mean+/-std (vs a common reference front
 built from the sweep), and for adaptive: final r_G, mean # transfer offspring,
 transfer-offspring survival rate, intra-regime offspring survival rate, and the
 full RMP trajectory (mean +/- std over seeds).
 
-Checkpointed to resubmission/out/task4_rmp_sweep_runs.pkl (resumable).
+Checkpointed to experiments_offline/out/task4_rmp_sweep_runs.pkl (resumable).
 
-Usage: python resubmission/task4_rmp_sweep.py --seeds 15 --device cuda
+Usage: python experiments_offline/task4_rmp_sweep.py --seeds 15 --device cuda
 """
 from __future__ import annotations
 
@@ -29,10 +29,10 @@ import torch
 from momgrap.config import default_config
 from momgrap.logging_utils import setup_logging
 from momgrap.mfea import run_mfea
-from resubmission.harness import (build_reference_front, igd_normalized,
+from experiments_offline.harness import (build_reference_front, igd_normalized,
                                   robust_hv_of_front, run_instrumented)
 
-OUT = "resubmission/out"
+OUT = "experiments_offline/out"
 RUNS = os.path.join(OUT, "task4_rmp_sweep_runs.pkl")
 FIXED_VALUES = [0.1, 0.3, 0.5]
 

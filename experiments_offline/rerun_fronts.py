@@ -4,11 +4,11 @@ For each (method, seed) it records the per-seed unified robust front (for IGD),
 timing (search / archive re-eval / total), peak memory, fitness-eval count and
 throughput, plus the RMP/survival trajectory for the adaptive method.
 
-Results are checkpointed to resubmission/out/rerun_fronts.pkl after every run, so
+Results are checkpointed to experiments_offline/out/rerun_fronts.pkl after every run, so
 the job is resumable (re-invoking skips finished (method, seed) pairs).
 
 Usage:
-    python resubmission/rerun_fronts.py --seeds 15 [--device cuda|cpu|auto]
+    python experiments_offline/rerun_fronts.py --seeds 15 [--device cuda|cpu|auto]
 """
 from __future__ import annotations
 
@@ -25,9 +25,9 @@ import torch
 
 from momgrap.config import default_config
 from momgrap.logging_utils import setup_logging
-from resubmission.harness import run_instrumented
+from experiments_offline.harness import run_instrumented
 
-OUT = "resubmission/out"
+OUT = "experiments_offline/out"
 CKPT = os.path.join(OUT, "rerun_fronts.pkl")
 METHODS = ["adaptive", "fixed_rmp", "no_transfer", "pooled", "mo_de", "mopso"]
 

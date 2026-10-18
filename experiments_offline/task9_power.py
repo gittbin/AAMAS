@@ -8,8 +8,8 @@ stable across policies.
 inv_gain policy:  rho_k proportional to 1/|h_k^H w_k|^2, renormalised to
 sum_k rho_k = P_max (weak users get more power -> helps worst-user fairness).
 
-Checkpointed to resubmission/out/task9_power_runs.pkl.
-Usage: python resubmission/task9_power.py --seeds 15 --device cuda
+Checkpointed to experiments_offline/out/task9_power_runs.pkl.
+Usage: python experiments_offline/task9_power.py --seeds 15 --device cuda
 """
 from __future__ import annotations
 
@@ -26,9 +26,9 @@ import numpy as np
 
 from momgrap.config import default_config
 from momgrap.logging_utils import setup_logging
-from resubmission.harness import build_reference_front, igd_normalized, run_instrumented
+from experiments_offline.harness import build_reference_front, igd_normalized, run_instrumented
 
-OUT = "resubmission/out"
+OUT = "experiments_offline/out"
 RUNS = os.path.join(OUT, "task9_power_runs.pkl")
 METHODS = ["adaptive", "no_transfer", "pooled"]
 LAB = {"adaptive": "RAMP", "no_transfer": "No-transfer", "pooled": "Pooled"}

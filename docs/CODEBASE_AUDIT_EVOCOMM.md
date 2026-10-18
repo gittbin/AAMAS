@@ -35,13 +35,13 @@ sau. Task 00 **không** sửa bất kỳ file `momgrap/*.py` nào — chỉ ghi 
  M results/experiment.pkl
  M results/run.log
 ?? figures_paper/
-?? resubmission/
+?? experiments_offline/
 ```
 
-> **Cảnh báo hồi quy:** working tree đang bẩn với các thay đổi resubmission quan
+> **Cảnh báo hồi quy:** working tree đang bẩn với các thay đổi experiments_offline quan
 > trọng. Không được `git reset --hard`, `git checkout -- .`, `git restore .`,
 > `git clean -fd(x)`, và không ghi đè `results/`, `figures/`, `figures_paper/`,
-> `figures_diag/`, `resubmission/`.
+> `figures_diag/`, `experiments_offline/`.
 
 ### Commit gần đây
 
@@ -275,7 +275,7 @@ def run_mfea(cfg: Config, seed: int | None = None, tag: str = "") -> MFEAResult
 - **`Environment` là MC snapshot, không phải sequential env** — không có
   `reset()`/`step()`/velocity/temporal correlation. Không gọi `sample_environment()`
   độc lập ở mỗi MARL step (mất tính liên tục theo thời gian).
-- **`resubmission/task10_online.py`** là per-realisation re-optimization, **không**
+- **`experiments_offline/task10_online.py`** là per-realisation re-optimization, **không**
   phải online MARL environment; chỉ dùng làm runtime/reference baseline.
 - **`results/experiment.pkl`** chủ yếu lưu objective fronts (NumPy), **không** bảo
   đảm có genotype archive → không dùng làm nguồn genotype cho khởi tạo MA/RIS.

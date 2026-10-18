@@ -34,7 +34,7 @@ jobs:
         run: python scripts_marl/smoke_env.py
 
   # Heavy legacy Stage-C pipeline (baselines + figures). Manual-only so the main CI
-  # stays fast and never regenerates the committed resubmission figures on every push.
+  # stays fast and never regenerates the committed offline experiment figures on every push.
   legacy-smoke:
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest

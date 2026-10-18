@@ -1,6 +1,6 @@
 """Task 13 (part 2) - sensitivity/scalability + RMP-sweep figures.
 
-Reads resubmission/out/sensitivity.json and task4_rmp_sweep.json and writes:
+Reads experiments_offline/out/sensitivity.json and task4_rmp_sweep.json and writes:
   figures_paper/fig_sens_B.png   HV & IGD vs MC batch B (Task 6)
   figures_paper/fig_scal_L.png   HV & runtime/mem vs RIS L (Task 7)
   figures_paper/fig_scal_M.png   HV & runtime/mem vs MA M (Task 8)
@@ -20,7 +20,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
-OUT = "resubmission/out"
+OUT = "experiments_offline/out"
 FIG = "figures_paper"
 plt.rcParams.update({"font.size": 14, "axes.labelsize": 15, "legend.fontsize": 11.5,
                      "xtick.labelsize": 12, "ytick.labelsize": 12, "lines.linewidth": 2.2,

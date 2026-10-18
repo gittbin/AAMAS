@@ -29,9 +29,9 @@ figures_*/
 checkpoints/
 runs/
 wandb/
-/resubmission/out/
-/resubmission/RESULTS.md
-/resubmission/TASK_ANSWERS.md
+/experiments_offline/out/
+/experiments_offline/RESULTS.md
+/experiments_offline/TASK_ANSWERS.md
 *.pkl
 *.pickle
 *.npy

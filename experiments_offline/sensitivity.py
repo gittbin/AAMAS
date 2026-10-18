@@ -2,7 +2,7 @@
 
 Runs RAMP (adaptive) at each swept configuration (15 seeds), recording per-seed
 unified front (for IGD), HV, runtime and peak memory. The default points
-(B=32, L=64, M=16) are REUSED from resubmission/out/rerun_fronts.pkl.
+(B=32, L=64, M=16) are REUSED from experiments_offline/out/rerun_fronts.pkl.
 
 Scaling conventions (documented, fixed before running):
   * B sweep: only the MC batch changes; objective landscape + HV reference are
@@ -17,8 +17,8 @@ Scaling conventions (documented, fixed before running):
 Because L and M change the achievable objective values, HV/IGD are compared
 within each sweep (per-sweep reference front), not across different knobs.
 
-Checkpointed to resubmission/out/sensitivity_runs.pkl (resumable).
-Usage: python resubmission/sensitivity.py --seeds 15 --device cuda [--task B|L|M|all]
+Checkpointed to experiments_offline/out/sensitivity_runs.pkl (resumable).
+Usage: python experiments_offline/sensitivity.py --seeds 15 --device cuda [--task B|L|M|all]
 """
 from __future__ import annotations
 
@@ -36,9 +36,9 @@ import numpy as np
 
 from momgrap.config import default_config
 from momgrap.logging_utils import setup_logging
-from resubmission.harness import build_reference_front, igd_normalized, run_instrumented
+from experiments_offline.harness import build_reference_front, igd_normalized, run_instrumented
 
-OUT = "resubmission/out"
+OUT = "experiments_offline/out"
 RUNS = os.path.join(OUT, "sensitivity_runs.pkl")
 
 

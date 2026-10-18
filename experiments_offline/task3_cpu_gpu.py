@@ -6,7 +6,7 @@ The two devices draw different RNG streams, but the amount of computation is
 identical, so the timing comparison is matched by construction (per the reviewer's
 note - no unmatched settings are compared).
 
-Usage: python resubmission/task3_cpu_gpu.py --seeds 3
+Usage: python experiments_offline/task3_cpu_gpu.py --seeds 3
 """
 from __future__ import annotations
 
@@ -23,9 +23,9 @@ import torch
 
 from momgrap.config import default_config
 from momgrap.logging_utils import setup_logging
-from resubmission.harness import run_instrumented
+from experiments_offline.harness import run_instrumented
 
-OUT = "resubmission/out"
+OUT = "experiments_offline/out"
 
 
 def main(argv=None):

@@ -791,7 +791,7 @@ significant); pareto_front (maximize + mixed); coverage + epsilon indicator.
 - `.github/workflows/evocomm-tests.yml` — job `cpu-tests` (CPU torch + requirements-marl
   → `pytest -q tests_marl -m "not slow and not cuda"` → smoke_backend → smoke_env);
   job `legacy-smoke` (Stage A/B/C `smoke_test.py`) chỉ chạy `workflow_dispatch` (manual,
-  tách riêng để CI chính nhanh & không tái tạo figures resubmission).
+  tách riêng để CI chính nhanh & không tái tạo figures offline).
 
 ### File sửa
 - `CHANGELOG_EVOCOMM.md`.

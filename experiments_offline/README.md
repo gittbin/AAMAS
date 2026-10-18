@@ -1,7 +1,8 @@
-# RAMP resubmission — scripts & reproduction
+# RAMP offline experiments - scripts and reproduction
 
-Everything the reviewer's `RAMP_experimental_tasks.md` asks for. Outputs go to
-`resubmission/out/` (JSON + human-readable `.txt`); figures to `figures_paper/`.
+Drivers for offline optimizer benchmarks, ablations, sensitivity studies, and statistical analysis.
+The core algorithms are implemented in `momgrap/`; this directory imports and evaluates them. Outputs go to
+`experiments_offline/out/` (JSON + human-readable `.txt`); figures to `figures_paper/`.
 Filled placeholders are aggregated in `out/ALL_PLACEHOLDERS.md`; a narrative
 summary is in `RESULTS.md`.
 
@@ -31,13 +32,13 @@ summary is in `RESULTS.md`.
 ## Reproduce from scratch
 ```bash
 # fast, no optimiser re-run
-python resubmission/task1_stats.py
-python resubmission/task5_similarity.py
-python resubmission/task13_figures.py
+python experiments_offline/task1_stats.py
+python experiments_offline/task5_similarity.py
+python experiments_offline/task13_figures.py
 
 # the re-run foundation (GPU, ~1.5 h), then everything that depends on it
-python resubmission/rerun_fronts.py --seeds 15 --device cuda
-python resubmission/run_reruns.py --seeds 15 --device cuda
+python experiments_offline/rerun_fronts.py --seeds 15 --device cuda
+python experiments_offline/run_reruns.py --seeds 15 --device cuda
 ```
 
 ## Core code changes (minimal, additive, backward-compatible)

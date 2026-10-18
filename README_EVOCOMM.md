@@ -58,7 +58,7 @@ pip install -r requirements-marl.txt   # inherits requirements.txt + gymnasium/p
 python smoke_test.py
 ```
 
-> Stage C regenerates `figures/fig1..3.png`. Those hold resubmission artifacts — back
+> Stage C regenerates `figures/fig1..3.png`. Those hold offline experiment artifacts — back
 > them up first (or run only Stage A/B) if you need to preserve them.
 
 ## 5. MARL smoke

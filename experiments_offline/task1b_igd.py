@@ -1,4 +1,4 @@
-"""Task 1b - per-seed IGD + common reference front, from resubmission/out/rerun_fronts.pkl.
+"""Task 1b - per-seed IGD + common reference front, from experiments_offline/out/rerun_fronts.pkl.
 
 For EACH seed a common reference front is built as the non-dominated union of all
 methods' unified robust fronts AT THAT SEED (so every method is scored against the
@@ -21,9 +21,9 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
 from scipy import stats
 
-from resubmission.harness import build_reference_front, igd_normalized
+from experiments_offline.harness import build_reference_front, igd_normalized
 
-OUT = "resubmission/out"
+OUT = "experiments_offline/out"
 CKPT = os.path.join(OUT, "rerun_fronts.pkl")
 LAB = {"adaptive": "RAMP", "no_transfer": "NT", "mo_de": "DE", "pooled": "POOL", "mopso": "PSO"}
 ORDER = ["adaptive", "no_transfer", "mo_de", "pooled", "mopso"]
