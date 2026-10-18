@@ -1,0 +1,52 @@
+name: evocomm-tests
+
+on:
+  push:
+    paths:
+      - "momgrap/**"
+      - "tests_marl/**"
+      - "scripts_marl/**"
+      - "configs_marl/**"
+      - "requirements*.txt"
+      - "pytest.ini"
+      - ".github/workflows/evocomm-tests.yml"
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  cpu-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install CPU PyTorch + MARL deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements-marl.txt
+      - name: Unit tests (CPU, not slow, not cuda)
+        run: pytest -q tests_marl -m "not slow and not cuda"
+      - name: Backend smoke
+        run: python scripts_marl/smoke_backend.py
+      - name: Env smoke
+        run: python scripts_marl/smoke_env.py
+
+  # Heavy legacy Stage-C pipeline (baselines + figures). Manual-only so the main CI
+  # stays fast and never regenerates the committed resubmission figures on every push.
+  legacy-smoke:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install CPU PyTorch + base deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements.txt
+      - name: Legacy smoke test (Stage A/B/C)
+        run: python smoke_test.py

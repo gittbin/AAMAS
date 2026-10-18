@@ -1,0 +1,84 @@
+# EvoComm-MOMGRAP smoke configuration.
+# Tiny physical geometry (M=4, L=16, K=2, Q=1) + short episodes so the whole
+# MARL pipeline runs in seconds on CPU. Mirrors CLAUDE_CODE_TASKS Sec 25.
+physical:
+  M: 4
+  L: 16
+  K: 2
+  Q: 1
+  bs_grid_rows: 2
+  bs_grid_cols: 2
+  ris_grid_rows: 4
+  ris_grid_cols: 4
+  pop_size: 12
+  max_gen: 2
+  mc_samples: 2
+  eval_batch_size: 16
+  device_str: cpu
+  log_every: 0
+
+dynamics:
+  episode_length: 16
+  dt_seconds: 0.02
+  regime_sampling: uniform_episode
+  gauss_markov_rho: 0.90
+  mobility_enabled: true
+  user_speed_min_mps: 0.0
+  user_speed_max_mps: 0.5
+  resample_scatter_directions_each_episode: true
+
+csi:
+  tau_train_min: 0.0
+  tau_train_max: 0.10
+  tau_eval: 0.05
+  actor_delay_steps: 1
+  beamformer_uses_current_estimate: true
+  expose_tau_to_actor: true
+  noise_scaling: rms
+
+actions:
+  power_codebook_size: 7
+  ris_group_count: 4
+  ris_phase_step_deg: 30.0
+  ma_step_fraction_of_cell: 0.10
+  ma_update_period: 4
+
+communication:
+  enabled: true
+  graph_type: full
+  max_messages_per_step: 1
+  message_dim: 8
+  message_cost: 0.01
+  delivery_delay_steps: 1
+
+reward:
+  rate_scale: 5.0
+  sensing_offset_db: 30.0
+  sensing_scale_db: 30.0
+  w_min_rate: 1.0
+  w_sum_rate: 0.1
+  w_sensing: 0.3
+  w_outage: 0.5
+  w_message: 0.01
+  w_reconfiguration: 0.01
+  w_violation: 1.0
+  rate_target_bpshz: 0.5
+
+rmappo:
+  seed: 0
+  total_timesteps: 1024
+  num_envs: 2
+  rollout_length: 16
+  learning_rate: 0.0003
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_coef: 0.2
+  entropy_coef: 0.01
+  value_coef: 0.5
+  max_grad_norm: 0.5
+  update_epochs: 2
+  num_minibatches: 2
+  hidden_size: 32
+  sequence_length: 8
+  eval_interval: 512
+  save_interval: 512

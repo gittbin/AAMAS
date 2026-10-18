@@ -1,0 +1,10 @@
+# MARL extension (EvoComm-MOMGRAP) dependencies.
+# Inherits the base momgrap requirements, then adds the multi-agent RL stack.
+# No RLlib / Ray in the MVP (kept deliberately lightweight).
+-r requirements.txt
+gymnasium>=1.0
+pettingzoo>=1.24
+PyYAML>=6.0
+tensorboard>=2.14
+pytest>=8.0
+scipy>=1.10

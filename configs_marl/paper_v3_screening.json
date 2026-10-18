@@ -1,0 +1,23 @@
+{
+  "experiment_version": "paper-v3-screening-1",
+  "stage": "development_screening",
+  "conditions": ["no_comm", "comm_reference", "comm_rms_csi", "comm_low_entropy", "comm_separate_clip"],
+  "training_seeds": [0, 1],
+  "steps_per_run": 150528,
+  "total_training_transitions": 1505280,
+  "workers": 10,
+  "training_seed_base": 100000000,
+  "training_seed_stride": 1000000,
+  "development_seeds": [1000000,1000001,1000002,1000003,1000004,1000005,1000006,1000007,1000008,1000009,1000010,1000011,1000012,1000013,1000014,1000015,1000016,1000017,1000018,1000019,1000020,1000021,1000022,1000023,1000024,1000025,1000026,1000027,1000028,1000029],
+  "assessment_seeds": [2000000,2000001,2000002,2000003,2000004,2000005,2000006,2000007,2000008,2000009,2000010,2000011,2000012,2000013,2000014,2000015,2000016,2000017,2000018,2000019,2000020,2000021,2000022,2000023,2000024,2000025,2000026,2000027,2000028,2000029],
+  "reserved_final_seed_start": 8000000,
+  "reserved_final_scenarios": 50,
+  "evaluation_interval_transitions": 50176,
+  "checkpoint_selection": "highest mean deterministic development return; earliest step on ties; selection scenarios are not final tests",
+  "assessment_role": "additional development diagnostics after checkpoint selection; cannot support final confirmatory claims",
+  "physical_model": "unchanged frozen paper-v2 physics, CSI acquisition, router, reward and codebooks",
+  "rms_csi_scope": "actor projection coordinates only; critic, payload and physical channels unchanged",
+  "separate_clip_scope": "one actor parameter group and one critic parameter group; same Adam and objective",
+  "inference": "greedy physical and communication categorical actions",
+  "final_policy": "reserved final scenarios remain unopened during screening"
+}

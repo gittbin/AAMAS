@@ -1,0 +1,96 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.venv-*/
+venv/
+env/
+.venv-paper/
+.tools-paper/
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+build/
+dist/
+
+# Experiment artifacts (regenerable)
+results/
+results_*/
+outputs/
+outputs_*/
+figures/
+figures_*/
+checkpoints/
+runs/
+wandb/
+/resubmission/out/
+/resubmission/RESULTS.md
+/resubmission/TASK_ANSWERS.md
+*.pkl
+*.pickle
+*.npy
+*.npz
+*.pt
+*.pth
+*.ckpt
+*.log
+*.out
+*.tfevents.*
+
+# Generated paper files (keep source and build scripts)
+**/generated/
+*.pdf
+*.aux
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+
+# Local tools, scratch files, and credentials
+.tmp-*/
+.tools-*/
+.claude/
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Additional local caches and packaging outputs
+.tox/
+.nox/
+.pyre/
+.hypothesis/
+*.egg
+pip-wheel-metadata/
+
+# LaTeX build intermediates
+*.nav
+*.snm
+*.vrb
+*.xdv
+*.bcf
+*.run.xml
+*.synctex(busy)
+
+# Temporary/editor files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~

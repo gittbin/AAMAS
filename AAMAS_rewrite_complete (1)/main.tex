@@ -1,0 +1,102 @@
+% Overleaf: select main.tex as Main document and use pdfLaTeX.
+% If official aamas.cls is absent, compile the reading preview automatically.
+% Supply the official AAMAS 2027 author package for submission formatting.
+\IfFileExists{aamas.cls}{}{\def\previewmode{1}}
+% Submission build requires the official AAMAS 2027 class/template.
+% Local reading preview: pdflatex preview.tex (article layout, not submission format).
+\ifdefined\previewmode
+\documentclass[10pt,letterpaper]{article}
+\usepackage[margin=0.72in,columnsep=0.24in]{geometry}
+\else
+\documentclass[sigconf,anonymous]{aamas}
+\fi
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,booktabs,graphicx,xcolor,array,url,hyperref,placeins,float}
+\ifdefined\previewmode
+\newenvironment{resultwide}{\begin{table}[H]}{\end{table}}
+\newenvironment{resulttable}{\begin{table}[H]}{\end{table}}
+\else
+\newenvironment{resultwide}{\begin{table*}[t]}{\end{table*}}
+\newenvironment{resulttable}{\begin{table}[t]}{\end{table}}
+\fi
+\hypersetup{hidelinks}
+\newcommand{\blank}{\rule{0.65cm}{0.35pt}}
+\newcommand{\fillresult}[1]{\par\smallskip\noindent\fbox{\parbox{0.94\linewidth}{\footnotesize\textbf{Results to fill:} #1\par\vspace{1mm}}}\par\smallskip}
+\newcommand{\Hhat}{\widehat{\mathbf H}}
+\newcommand{\HH}{\mathbf H}
+\newcommand{\PP}{\mathbf P}
+\newcommand{\WW}{\mathbf W}
+\newcommand{\pp}{\mathbf p}
+\newcommand{\thh}{\boldsymbol\theta}
+\newcommand{\CN}{\mathcal{CN}}
+\hypersetup{pdftitle={Heterogeneous Multi-Agent Coordination in Programmable 6G Networks},pdfauthor={Anonymous author(s)}}
+\title{Heterogeneous Multi-Agent Coordination in Programmable 6G Networks under Delayed Partial Observability and Costly Communication}
+\ifdefined\previewmode
+\author{Anonymous author(s)}
+\date{Working manuscript: correctness validated; main experiments in progress}
+\else
+\author{Anonymous Author(s)}
+\affiliation{\institution{Submitted for double-blind review}\country{}}
+\email{anon@example.com}
+% Official AAMAS 2027 metadata; class and style files are unmodified.
+\makeatletter
+\gdef\@copyrightpermission{
+  \begin{minipage}{0.2\columnwidth}
+   \href{https://creativecommons.org/licenses/by/4.0/}{\includegraphics[width=0.90\textwidth]{by}}
+  \end{minipage}\hfill
+  \begin{minipage}{0.8\columnwidth}
+   \href{https://creativecommons.org/licenses/by/4.0/}{This work is licensed under a Creative Commons Attribution International 4.0 License.}
+  \end{minipage}
+  \vspace{5pt}
+}
+\makeatother
+\setcopyright{ifaamas}
+\acmConference[AAMAS 2027]{Proc.\@ of the 26th International Conference
+on Autonomous Agents and Multiagent Systems (AAMAS 2027)}{3--7 May 2027}{Hanoi, Vietnam}{M.~Baldoni, F.~Fang, W.~Yeoh, N.~Yorke-Smith (eds.)}
+\copyrightyear{2027}
+\acmYear{2027}
+\acmDOI{}
+\acmISBN{}
+\submissionType{Research Paper Track}
+\acmSubmissionID{XXXX}
+\fi
+\begin{document}
+\ifdefined\previewmode\maketitle\fi
+\begin{abstract}
+Programmable 6G networks combine heterogeneous actuators that share a physical environment but differ in local observations, action spaces, and update timescales. We investigate when decentralized adaptation is useful and when explicit communication justifies its cost. We formulate power allocation, reconfigurable-surface control, and movable-antenna positioning as a cooperative decentralized partially observable Markov decision process. Separate recurrent actors are trained with a centralized critic, while execution uses delayed channel estimates, discrete actuator codebooks, and a feasibility shield. Communication is selective, constrained by a directed graph and delivery budget, explicitly priced, and delayed by one control interval. Our evaluation separates online adaptation from learned static configuration, actuator contributions from cross-actuator coordination, and message content from delivery patterns and training effects. It compares decentralized policies with static evolutionary configurations, a factorized centralized recurrent policy, and a model-based online optimizer under controlled information access. A fresh 10-block study tests seven prespecified contrasts on 150 final scenarios. Adaptive--frozen25 (post-freeze rate) changed by +0.151 (Holm $p=0.0234$). Comm-trained--no-comm (return) changed by -0.545 (Holm $p=0.8242$). Messages on--off (return) changed by -0.485 (Holm $p=0.8242$).
+\end{abstract}
+\ifdefined\previewmode
+\noindent\textbf{Draft status.} All complete-study results have passed artifact checks. Submission metadata and page limits are assessed separately; this is a reading preview.
+\else
+\keywords{Multi-agent reinforcement learning; decentralized control; partial observability; costly communication; programmable wireless networks}
+\maketitle
+\fi
+
+\input{generated/model_and_protocol.tex}
+
+\section{Results}
+\label{sec:results}
+\input{generated/completion.tex}
+
+\section{Discussion and Limitations}
+The design separates selecting a better configuration, adapting to changing conditions, and coordinating coupled actuators. Superiority to an initial static layout establishes only the first unless the frozen-policy comparison supports continued adaptation. Full-team performance must be compared with the best subset before assigning gains to heterogeneous coordination.
+
+Communication conclusions are conditional. Passing the cost-only and asymmetric-information controls demonstrates trainability in those settings, not informative wireless payloads. Insensitivity to content at fixed delivery suggests limited content use under that condition; sensitivity to recipient masks can coexist with it. If communication fails in the wireless task, redundant-observation or insufficient-semantics explanations remain hypotheses unless identified by controls. If it helps, the price sweep and graph study quantify when gains exceed cost.
+
+The deployment interpretation is architectural. Local actors avoid gathering the union of observations for each high-level decision, but low-level precoding and delivery scheduling retain their stated information and infrastructure requirements. Factorized centralized policies need not enumerate the Cartesian product of physical actions. Performance and measured latency are reported directly.
+
+Limitations include one BS and RIS, discrete codebooks, no inter-cell interference, simplified mobility/errors, and illumination rather than a receive-side sensing metric. The low-level layer has current estimated CSI; these results do not establish resilience when that layer also has stale CSI. MA control lacks detailed actuation latency, energy, and mutual coupling. A frozen-policy front is policy-dependent. Scaling to more radios or richer communication is future work unless evaluated.
+
+
+
+\section{Conclusion}
+We formulated heterogeneous wireless control as a Dec-POMDP with delayed local observations, constrained communication, and feasibility-preserving execution. Estimated-channel control is separated from true-channel performance, retaining interference under CSI mismatch. Matched controls distinguish adaptation, actuator complementarity, memory, and message utility. Adaptive--frozen25 (post-freeze rate) changed by +0.151 (Holm $p=0.0234$). Comm-trained--no-comm (return) changed by -0.545 (Holm $p=0.8242$). Messages on--off (return) changed by -0.485 (Holm $p=0.8242$). These findings are conditional on the codebooks, information boundaries and tested training budget; measured latency covers decision kernels only.
+\FloatBarrier
+\label{lastcontentpage}
+\ifdefined\previewmode
+\bibliographystyle{plain}
+\else
+\bibliographystyle{ACM-Reference-Format}
+\fi
+\bibliography{references}
+\end{document}
