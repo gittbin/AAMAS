@@ -94,3 +94,6 @@ pip-wheel-metadata/
 *.swp
 *.swo
 *~
+
+# Local paper draft
+/AAMAS_rewrite_complete (1)/
